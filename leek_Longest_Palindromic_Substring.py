@@ -31,7 +31,7 @@ class Solution:
             even_len = self.expandChecker(s, i, i+1)
             length = max(odd_len, even_len)
             if length > (end - start):
-                start = i - length//2
+                start = i - (length-1)//2
                 end = i + length//2
 
         return s[start:end+1]
