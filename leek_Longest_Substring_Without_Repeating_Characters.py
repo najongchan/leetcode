@@ -8,11 +8,11 @@ class Solution:
         
         while i < length and j < length:
             if s[i] not in repeat_check_set:
-                repeat_check_set.add(s[i])
+                repeat_check_set.add(i)
                 i += 1
                 answer = max(answer, i - j)
             else:
-                repeat_check_set.remove(s[j])
+                answer.remove(j)
                 j += 1
 
         return answer
