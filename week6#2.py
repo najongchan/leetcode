@@ -3,26 +3,39 @@ class Solution:
     def sortColors(self, nums: List[int]) -> None:
         """
         Do not return anything, modify nums in-place instead.
-        use counting sort
+        hint : dutch partitioning problem
         """
-        color_map = {
-            "red": 0,
-            "white": 1,
-            "blue": 2
-        }
+        red, white, blue = 0, 0, len(nums)-1
 
-        count_list = {}
-        count_list[color_map['red']] = nums.count(color_map['red'])
-        count_list[color_map['white']] = nums.count(color_map['white'])
-        count_list[color_map['blue']] = nums.count(color_map['blue'])
-
-        ex_value = 0
-        for key, value in count_list.items():
-            for i in range(ex_value, ex_value + value):
-                nums[i] = key
-            ex_value += value
-
+        while white <= blue:
+            if nums[white] == 0:
+                nums[red], nums[white] = nums[white], nums[red]
+                white += 1
+                red += 1
+            elif nums[white] == 1:
+                white += 1
+            else:
+                nums[white], nums[blue] = nums[blue], nums[white]
+                blue -= 1
         return
+
+"""
+if not nums:
+            return
+        onesIdx = 0
+        twosIdx = len(nums) - 1
+        idx = 0
+        while idx <= twosIdx:
+            if nums[idx] == 0:
+                nums[onesIdx], nums[idx] = nums[idx], nums[onesIdx]
+                onesIdx += 1
+                idx += 1
+            elif nums[idx] == 2:
+                nums[twosIdx], nums[idx] = nums[idx], nums[twosIdx]
+                twosIdx -= 1
+            else:
+                idx += 1
+"""
         
         
 input = [2,0,2,1,1,0]
