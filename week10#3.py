@@ -1,4 +1,5 @@
 # https://leetcode.com/problems/course-schedule/
+# https://leetcode.com/problems/course-schedule/discuss/58586/Python-20-lines-DFS-solution-sharing-with-explanation
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         # 수업별 선수과목 정보 (key:수업, value:선수과목 List)
