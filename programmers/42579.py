@@ -13,18 +13,14 @@ def solution(genres, plays):
         playlist[genres[i]]['total'] += plays[i]
         playlist[genres[i]]['songs'][i] = plays[i]
 
-    playlist = list(sorted(playlist.items(), key=lambda item: item[1]['total'], reverse=True))
+    sorted_playlist = list(sorted(playlist.items(), key=lambda item: item[1]['total'], reverse=True))
     answer = []
-    for genre in playlist:
-        best_songs = list(sorted(genre[1]['songs'].items(), key=lambda item: item[1], reverse=True))
-        limit = 0
-        while len(best_songs) > 0:
-            answer.append(best_songs.pop(0)[0])
-            limit += 1
-            if limit > 1:
-                break
+    for x in sorted_playlist:
+        best_songs = list(sorted(x[1]['songs'].items(), key=lambda item: item[1], reverse=True))[:2]
+        for song in best_songs:
+            answer.append(song[0])
 
     return answer
 
 
-print(solution(["classic", "pop", "classic", "classic", "pop"], [500, 600, 150, 800, 2500]))
+print(solution(["classic", "pop", "classic", "classic", "pop", "hiphop"], [500, 600, 150, 800, 2500,10]))
