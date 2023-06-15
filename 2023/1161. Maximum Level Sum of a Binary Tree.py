@@ -22,5 +22,5 @@ class Solution:
             if node.right is not None:
                 node_list.append((level + 1, node.right))
 
-        return max(level_nodes, key=level_nodes.get())
+        return max(level_nodes, key=level_nodes.get)
 
